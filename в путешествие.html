@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Нячанг: Твоё Золотое Приключение, Александра!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Great+Vibes&family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background: linear-gradient(135deg, #fff9f0 0%, #ffe4cc 50%, #ffd700 100%);
+            color: #4a3728;
+            line-height: 2;
+            overflow-x: hidden;
+            font-size: 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        /* Floating particles */
+        .particle {
+            position: fixed;
+            pointer-events: none;
+            opacity: 0.6;
+            animation: float 15s infinite ease-in-out;
+            z-index: 1;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-100vh) rotate(360deg); }
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(rgba(255,215,0,0.15), rgba(255,140,0,0.25)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23FFE4B5" width="1200" height="800"/><path fill="%23FFA500" opacity="0.3" d="M0 400 Q300 350 600 400 T1200 400 L1200 800 L0 800 Z"/><circle cx="200" cy="150" r="80" fill="%23FFD700" opacity="0.6"/><circle cx="900" cy="200" r="60" fill="%23FFD700" opacity="0.4"/><path d="M100 700 Q150 650 200 700 T300 700" fill="none" stroke="%23228B22" stroke-width="3"/><path d="M900 650 Q950 600 1000 650 T1100 650" fill="none" stroke="%23228B22" stroke-width="3"/></svg>');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(255,215,0,0.4) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(255,140,0,0.3) 0%, transparent 50%),
+                        radial-gradient(circle at 50% 50%, rgba(255,215,0,0.2) 0%, transparent 70%);
+            pointer-events: none;
+            animation: shimmer 8s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 2s ease-out;
+            padding: 40px;
+        }
+
+        .hero h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 10rem;
+            background: linear-gradient(135deg, #D4AF37 0%, #FFD700 50%, #FFA500 100%, #FF8C00 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 4px 4px 8px rgba(0,0,0,0.15);
+            margin-bottom: 20px;
+            letter-spacing: 5px;
+            animation: glow 3s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.2); }
+        }
+
+        .hero-subtitle {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: #B8860B;
+            font-style: italic;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(255,255,255,0.9);
+        }
+
+        .hero-description {
+            font-size: 2rem;
+            color: #8B7355;
+            margin-bottom: 40px;
+            font-weight: 300;
+            line-height: 1.8;
+        }
+
+        .personalized {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.5rem;
+            background: linear-gradient(135deg, #DAA520, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-top: 40px;
+            animation: pulse 3s ease-in-out infinite, glow 4s ease-in-out infinite;
+        }
+
+        .heart {
+            display: inline-block;
+            animation: heartbeat 1.5s ease-in-out infinite;
+            color: #FF6B6B;
+            font-size: 1.2em;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            font-size: 3rem;
+            color: #D4AF37;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            text-align: center;
+            background: linear-gradient(135deg, #D4AF37 0%, #FFD700 50%, #FFA500 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 60px;
+            position: relative;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.1);
+        }
+
+        .section-title::after {
+            content: '✦ ✦ ✦';
+            display: block;
+            font-size: 2.5rem;
+            color: #FFD700;
+            margin-top: 20px;
+            -webkit-text-fill-color: #FFD700;
+            letter-spacing: 20px;
+        }
+
+        /* Hotel Section */
+        .hotel-section {
+            background: linear-gradient(to bottom, rgba(255,248,220,0.9), rgba(255,228,181,0.7));
+            border-top: 4px solid #FFD700;
+            border-bottom: 4px solid #FFD700;
+            position: relative;
+        }
+
+        .hotel-section::before {
+            content: '🌺';
+            position: absolute;
+            top: 30px;
+            left: 50px;
+            font-size: 4rem;
+            opacity: 0.3;
+            animation: sway 5s ease-in-out infinite;
+        }
+
+        .hotel-section::after {
+            content: '🌺';
+            position: absolute;
+            bottom: 30px;
+            right: 50px;
+            font-size: 4rem;
+            opacity: 0.3;
+            animation: sway 5s ease-in-out infinite reverse;
+        }
+
+        @keyframes sway {
+            0%, 100% { transform: rotate(-10deg); }
+            50% { transform: rotate(10deg); }
+        }
+
+        .hotel-card {
+            background: rgba(255,255,255,0.95);
+            border-radius: 30px;
+            padding: 60px;
+            box-shadow: 0 15px 50px rgba(212,175,55,0.4);
+            border: 3px solid #FFD700;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hotel-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,215,0,0.2) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hotel-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: #B8860B;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        .hotel-intro {
+            text-align: center;
+            font-size: 2rem;
+            font-style: italic;
+            color: #6b5344;
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        .hotel-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 35px;
+            margin-top: 40px;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 35px 25px;
+            background: linear-gradient(135deg, rgba(255,215,0,0.15), rgba(255,140,0,0.15));
+            border-radius: 20px;
+            border: 2px solid rgba(212,175,55,0.4);
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 20px rgba(212,175,55,0.2);
+        }
+
+        .feature:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 15px 40px rgba(212,175,55,0.4);
+            background: linear-gradient(135deg, rgba(255,215,0,0.25), rgba(255,140,0,0.25));
+        }
+
+        .feature-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .feature h3 {
+            font-family: 'Playfair Display', serif;
+            color: #DAA520;
+            margin-bottom: 15px;
+            font-size: 2rem;
+        }
+
+        .feature p {
+            font-size: 1.4rem;
+            color: #6b5344;
+            line-height: 1.6;
+        }
+
+        /* Places Grid */
+        .places-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .place-card {
+            background: rgba(255,255,255,0.95);
+            border-radius: 25px;
+            padding: 45px;
+            box-shadow: 0 10px 40px rgba(212,175,55,0.3);
+            border: 3px solid transparent;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .place-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, #D4AF37, #FFD700, #FFA500, #FF8C00);
+        }
+
+        .place-card:hover {
+            border-color: #FFD700;
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(212,175,55,0.5);
+        }
+
+        .place-number {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            font-family: 'Great Vibes', cursive;
+            font-size: 4rem;
+            color: rgba(212,175,55,0.25);
+        }
+
+        .place-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.3rem;
+            color: #B8860B;
+            margin-bottom: 20px;
+            padding-right: 60px;
+        }
+
+        .place-card p {
+            font-size: 1.5rem;
+            color: #6b5344;
+            font-style: italic;
+            line-height: 1.7;
+        }
+
+        /* Food Section */
+        .food-section {
+            background: linear-gradient(135deg, rgba(255,215,0,0.2), rgba(255,140,0,0.15));
+            position: relative;
+        }
+
+        .food-section::before {
+            content: '🍜';
+            position: absolute;
+            top: 50px;
+            right: 80px;
+            font-size: 5rem;
+            opacity: 0.2;
+            animation: bounce 3s infinite;
+        }
+
+        .food-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-top: 50px;
+        }
+
+        .food-category {
+            background: rgba(255,255,255,0.95);
+            padding: 50px;
+            border-radius: 25px;
+            box-shadow: 0 10px 40px rgba(212,175,55,0.3);
+            border: 2px solid #FFD700;
+        }
+
+        .food-category h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: #DAA520;
+            margin-bottom: 35px;
+            text-align: center;
+            border-bottom: 3px solid #FFD700;
+            padding-bottom: 20px;
+        }
+
+        .food-list {
+            list-style: none;
+        }
+
+        .food-list li {
+            padding: 18px 0;
+            padding-left: 45px;
+            position: relative;
+            font-size: 1.5rem;
+            border-bottom: 2px dashed rgba(212,175,55,0.4);
+            transition: all 0.3s ease;
+        }
+
+        .food-list li:hover {
+            padding-left: 55px;
+            color: #B8860B;
+        }
+
+        .food-list li::before {
+            content: '✦';
+            position: absolute;
+            left: 10px;
+            font-size: 1.5rem;
+            color: #FFD700;
+        }
+
+        /* Tips Section */
+        .tips-container {
+            background: rgba(255,255,255,0.95);
+            border-radius: 30px;
+            padding: 60px;
+            box-shadow: 0 15px 50px rgba(212,175,55,0.4);
+            border: 4px double #FFD700;
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+            margin-top: 40px;
+        }
+
+        .tip-card {
+            background: linear-gradient(135deg, rgba(255,215,0,0.15), rgba(255,140,0,0.15));
+            padding: 40px;
+            border-radius: 20px;
+            border-left: 6px solid #FFD700;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(212,175,55,0.2);
+        }
+
+        .tip-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(212,175,55,0.3);
+        }
+
+        .tip-card h4 {
+            font-family: 'Playfair Display', serif;
+            color: #B8860B;
+            font-size: 1.9rem;
+            margin-bottom: 15px;
+        }
+
+        .tip-card p {
+            font-size: 1.4rem;
+            color: #6b5344;
+            line-height: 1.7;
+        }
+
+        /* Magic Moments */
+        .magic-section {
+            background: linear-gradient(135deg, rgba(255,215,0,0.25), rgba(255,140,0,0.2));
+            position: relative;
+        }
+
+        .magic-section::before {
+            content: '✨';
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 4rem;
+            color: #FFD700;
+            opacity: 0.6;
+            animation: sparkle 2s infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0.4; transform: translateX(-50%) scale(1); }
+            50% { opacity: 1; transform: translateX(-50%) scale(1.3); }
+        }
+
+        .magic-intro {
+            text-align: center;
+            font-size: 2rem;
+            font-style: italic;
+            color: #8B7355;
+            margin-bottom: 50px;
+            font-family: 'Playfair Display', serif;
+            line-height: 1.8;
+        }
+
+        .magic-list {
+            list-style: none;
+            max-width: 900px;
+            margin: 50px auto;
+        }
+
+        .magic-list li {
+            padding: 30px 40px;
+            margin-bottom: 25px;
+            background: rgba(255,255,255,0.95);
+            border-radius: 20px;
+            font-size: 1.6rem;
+            box-shadow: 0 8px 30px rgba(212,175,55,0.3);
+            position: relative;
+            padding-left: 90px;
+            transition: all 0.4s ease;
+            border: 2px solid rgba(255,215,0,0.3);
+        }
+
+        .magic-list li:hover {
+            transform: translateX(15px) scale(1.02);
+            box-shadow: 0 12px 40px rgba(212,175,55,0.4);
+            border-color: #FFD700;
+        }
+
+        .magic-list li::before {
+            content: '✨';
+            position: absolute;
+            left: 35px;
+            font-size: 2.2rem;
+        }
+
+        /* 11 Days Section */
+        .inspiration-section {
+            background: rgba(255,255,255,0.85);
+        }
+
+        .inspiration-box {
+            background: linear-gradient(135deg, rgba(255,215,0,0.15), rgba(255,140,0,0.15));
+            padding: 60px;
+            border-radius: 30px;
+            border: 3px solid #FFD700;
+            box-shadow: 0 10px 40px rgba(212,175,55,0.3);
+        }
+
+        .inspiration-text {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 40px;
+            font-family: 'Playfair Display', serif;
+            color: #6b5344;
+            line-height: 1.9;
+            font-style: italic;
+        }
+
+        .days-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 35px;
+            margin-top: 40px;
+        }
+
+        .day-card {
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 8px 30px rgba(212,175,55,0.3);
+            border: 2px solid rgba(255,215,0,0.4);
+            transition: all 0.4s ease;
+        }
+
+        .day-card:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 15px 40px rgba(212,175,55,0.4);
+            border-color: #FFD700;
+        }
+
+        .day-card h4 {
+            font-family: 'Playfair Display', serif;
+            color: #DAA520;
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .day-card p {
+            font-size: 1.4rem;
+            color: #6b5344;
+            line-height: 1.7;
+        }
+
+        /* Personal Message */
+        .personal-message {
+            background: linear-gradient(135deg, rgba(255,215,0,0.2), rgba(255,140,0,0.15));
+            padding: 60px;
+            border-radius: 30px;
+            margin-top: 60px;
+            border: 3px solid #FFD700;
+            text-align: center;
+        }
+
+        .personal-message p {
+            font-size: 2.2rem;
+            font-family: 'Playfair Display', serif;
+            color: #6b5344;
+            line-height: 2;
+            font-style: italic;
+        }
+
+        .personal-message .highlight {
+            color: #B8860B;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #D4AF37, #FFD700, #FFA500, #FF8C00);
+            color: white;
+            text-align: center;
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="white" opacity="0.4"/></svg>');
+            background-size: 50px 50px;
+            opacity: 0.4;
+            animation: twinkle 5s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+
+        .footer-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-message {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4rem;
+            margin-bottom: 30px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            animation: glow 3s ease-in-out infinite;
+        }
+
+        .footer-submessage {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-style: italic;
+            line-height: 1.8;
+        }
+
+        .footer-signature {
+            margin-top: 40px;
+            font-family: 'Great Vibes', cursive;
+            font-size: 3rem;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .footer-date {
+            margin-top: 25px;
+            font-size: 1.4rem;
+            opacity: 0.9;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.08); opacity: 0.9; }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-25px); }
+            60% { transform: translateX(-50%) translateY(-12px); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            body { font-size: 18px; }
+            .hero h1 { font-size: 5rem; }
+            .hero-subtitle { font-size: 2rem; }
+            .hero-description { font-size: 1.5rem; }
+            .personalized { font-size: 2.5rem; }
+            .section-title { font-size: 3rem; }
+            .hotel-name { font-size: 2.5rem; }
+            .food-grid { grid-template-columns: 1fr; }
+            .hotel-card { padding: 40px 30px; }
+            .places-grid { grid-template-columns: 1fr; }
+            .tips-grid { grid-template-columns: 1fr; }
+            .container { padding: 0 20px; }
+        }
+
+        /* Decorative sparkles */
+        .sparkle {
+            position: fixed;
+            width: 15px;
+            height: 15px;
+            background: radial-gradient(circle, #FFD700, transparent);
+            border-radius: 50%;
+            animation: sparkleClick 1s ease-out forwards;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        @keyframes sparkleClick {
+            0% { opacity: 1; transform: scale(0); }
+            50% { opacity: 0.8; transform: scale(1.5); }
+            100% { opacity: 0; transform: scale(2); }
+        }
+
+        .emoji-float {
+            position: absolute;
+            font-size: 2rem;
+            animation: floatUp 4s ease-in infinite;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.3; }
+            90% { opacity: 0.3; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating emojis -->
+    <div class="emoji-float" style="left: 10%; animation-delay: 0s;">🌺</div>
+    <div class="emoji-float" style="left: 20%; animation-delay: 2s;">✨</div>
+    <div class="emoji-float" style="left: 35%; animation-delay: 4s;">🌊</div>
+    <div class="emoji-float" style="left: 50%; animation-delay: 1s;">🌅</div>
+    <div class="emoji-float" style="left: 65%; animation-delay: 3s;"></div>
+    <div class="emoji-float" style="left: 80%; animation-delay: 5s;">🦋</div>
+    <div class="emoji-float" style="left: 90%; animation-delay: 2.5s;">✨</div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Nha Trang</h1>
+            <p class="hero-subtitle">Твоё Золотое Приключение</p>
+            <p class="hero-description">
+                11 дней, наполненных солнцем, морем и волшебством<br>
+                Только для тебя, Александра
+            </p>
+            <p class="personalized">С любовью и верой в чудеса <span class="heart">💛</span></p>
+        </div>
+        <div class="scroll-indicator">↓</div>
+    </section>
+
+    <!-- Hotel Section -->
+    <section class="hotel-section">
+        <div class="container">
+            <h2 class="section-title">Твой Дом у Моря</h2>
+            <div class="hotel-card">
+                <h3 class="hotel-name">🏨 Muong Thanh Luxury Vien Trieu</h3>
+                <p class="hotel-intro">
+                    Представь: ты просыпаешься под звук волн, открываешь глаза и видишь бескрайний океан...<br>
+                    Это не мечта — это твои следующие 11 дней!
+                </p>
+                
+                <div class="hotel-features">
+                    <div class="feature">
+                        <span class="feature-icon">🏖️</span>
+                        <h3>Твой личный пляж</h3>
+                        <p>Пляж Вьен Чьеу ждёт именно тебя — с чистейшим песком и бирюзовой водой</p>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">🏊</span>
+                        <h3>Бассейн на крыше</h3>
+                        <p>Почувствуй себя королевой — плавай с видом на весь залив Нячанга</p>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">🍹</span>
+                        <h3>Закаты с коктейлем</h3>
+                        <p>Бар на крыше — идеальное место, чтобы встретить закат мечты</p>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">🌅</span>
+                        <h3>Рассветы для тебя</h3>
+                        <p>Встречай утро с чашкой ароматного кофе и видом на океан</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Must-Visit Places -->
+    <section class="places-section">
+        <div class="container">
+            <h2 class="section-title">Места, Которые Ты Полюбишь</h2>
+            <div class="places-grid">
+                <div class="place-card">
+                    <span class="place-number">01</span>
+                    <h3>🏯 Погар Лонг Шон</h3>
+                    <p>Белый Будда на холме обнимет тебя своим спокойствием. Поднимись сюда на закате — и ты поймёшь, что такое настоящее счастье</p>
+                </div>
+                <div class="place-card">
+                    <span class="place-number">02</span>
+                    <h3>🗼 Башни По Нагар</h3>
+                    <p>Прикоснись к древности. Здесь время останавливается, а душа наполняется мудростью веков</p>
+                </div>
+                <div class="place-card">
+                    <span class="place-number">03</span>
+                    <h3>🎡 VinWonders</h3>
+                    <p>3.3 км над морем на канатной дороге — это полёт! Остров развлечений вернёт тебе ощущение ребёнка</p>
+                </div>
+                <div class="place-card">
+                    <span class="place-number">04</span>
+                    <h3>♨️ Тхап Ба</h3>
+                    <p>Горячие источники и грязевые ванны — позволь себе полностью расслабиться и обновиться</p>
+                </div>
+                <div class="place-card">
+                    <span class="place-number">05</span>
+                    <h3>🏝️ Острова</h3>
+                    <p>Подводный мир ждёт именно тебя! Сноркелинг среди кораллов — это магия, которую ты запомнишь навсегда</p>
+                </div>
+                <div class="place-card">
+                    <span class="place-number">06</span>
+                    <h3>🌃 Ночной рынок</h3>
+                    <p>Погрузись в настоящий Вьетнам! Здесь ты найдёшь не только сувениры, но и атмосферу, которая зацепит твоё сердце</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Food Section -->
+    <section class="food-section">
+        <div class="container">
+            <h2 class="section-title">Вкусы, Которые Ты Запомнишь</h2>
+            <div class="food-grid">
+                <div class="food-category">
+                    <h3>🍜 Попробуй Обязательно</h3>
+                    <ul class="food-list">
+                        <li>Bun Cha Ca — рыбная лапша, которая станет твоей любовью с первого укуса</li>
+                        <li>Banh Can — мини-блинчики с яйцом, тают во рту</li>
+                        <li>Свежие морепродукты на гриле — лови момент!</li>
+                        <li>Go Cuon — свежие роллы, лёгкие как облако</li>
+                        <li>Com Tam — рис с ребрышками, настоящий вьетнамский comfort food</li>
+                        <li>Cocosa — кокосовое мороженое, рай в жаркий день</li>
+                        <li>Vietnamese coffee с яйцом — попробуй, это бомба!</li>
+                        <li>Fresh sugarcane juice — сладость природы</li>
+                    </ul>
+                </div>
+                <div class="food-category">
+                    <h3>🍽️ Твои Рестораны</h3>
+                    <ul class="food-list">
+                        <li>Lac Cand — лучший гриль в городе, ты будешь в восторге</li>
+                        <li>Bo Ke — морепродукты прямо у моря, романтика!</li>
+                        <li>Skylight — rooftop с панорамой, идеален для заката</li>
+                        <li>Cosa Nostra — если вдруг захочется Италии</li>
+                        <li>Lan's Restaurant — местная кухня, аутентично и вкусно</li>
+                        <li>Seafood Plaza — свежие морепродукты, выбирай сама</li>
+                        <li>100 Roofs — атмосферное место с историей</li>
+                        <li>U restaurant — fusion кухня для гурманов</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tips Section -->
+    <section class="tips-section">
+        <div class="container">
+            <h2 class="section-title">Советы От Сердца</h2>
+            <div class="tips-container">
+                <div class="tips-grid">
+                    <div class="tip-card">
+                        <h4>📸 Твоё идеальное фото</h4>
+                        <p>5-7 утра и 17-19 вечера — это золотой час. Ты получишь кадры, от которых захватывает дух!</p>
+                    </div>
+                    <div class="tip-card">
+                        <h4>🚗 Как передвигаться</h4>
+                        <p>Grab — твой лучший друг (как Uber). Или возьми скутер — почувствуй свободу!</p>
+                    </div>
+                    <div class="tip-card">
+                        <h4>💰 Деньги</h4>
+                        <p>VND (1 USD ≈ 25,000 VND). Всегда имей мелкие купюры — пригодятся на рынках</p>
+                    </div>
+                    <div class="tip-card">
+                        <h4>🗣️ Пару слов по-вьетнамски</h4>
+                        <p>"Xin chào" (привет) и "Cam on" (спасибо) откроют тебе много дверей и улыбок!</p>
+                    </div>
+                    <div class="tip-card">
+                        <h4>👗 Что взять с собой</h4>
+                        <p>Лёгкую дышащую одежду, головной убор и SPF 50+ — солнце здесь жаркое!</p>
+                    </div>
+                    <div class="tip-card">
+                        <h4>💧 Важное правило</h4>
+                        <p>Только бутилированная вода! Лёд в ресторанах безопасен, не переживай</p>
+                    </div>
+                    <div class="tip-card">
+                        <h4>🏖️ На пляже</h4>
+                        <p>Лежаки бесплатные, если закажешь напиток. Твой пляж — прямо рядом с отелем!</p>
+                    </div>
+                    <div class="tip-card">
+                        <h4>🛍️ Торгуйся!</h4>
+                        <p>На рынках это обязательно! Начинай с 50% от названной цены — это игра!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Magic Moments -->
+    <section class="magic-section">
+        <div class="container">
+            <h2 class="section-title">Моменты, Которые Создут Тебя</h2>
+            <p class="magic-intro">
+                У тебя есть целых 11 дней, чтобы создать свои особенные воспоминания.<br>
+                Вот идеи, которые могут вдохновить тебя на магию:
+            </p>
+            <ul class="magic-list">
+                <li>Встреть рассвет на пляже Чан Фу с чашкой вьетнамского кофе — это изменит твоё утро навсегда</li>
+                <li>Прокатись на канатной дороге на закате — виды будут такими, что захочется плакать от красоты</li>
+                <li>Попробуй рыбный массаж в горячих источниках Тхап Ба — это странно, но невероятно приятно!</li>
+                <li>Найди идеальные жемчужины на рынке и создай своё уникальное украшение — талисман этой поездки</li>
+                <li>Загадай желание у Белого Будды в пагоде Лонг Шон — говорят, сбываются</li>
+                <li>Устрой пикник на необитаемом острове во время экскурсии — почувствуй себя Робинзоном</li>
+                <li>Прими участие в мастер-классе по вьетнамской кухне — привези домой не только фото, но и навыки</li>
+                <li>Встреть полную луну на пляже при свечах — романтика, от которой замирает сердце</li>
+                <li>Посети местный рынок на рассвете вместе с местными — увидишь настоящий Вьетнам</li>
+                <li>Сделай традиционный вьетнамский маникюр с рисунком — маленький сувенир для себя</li>
+                <li>Прокатись на лодке по реке Кай на закате — тишина и покой, которые тебе нужны</li>
+                <li>Найди свой идеальный уголок для медитации у моря — место, куда будешь возвращаться мыслями</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 11 Days Inspiration -->
+    <section class="inspiration-section">
+        <div class="container">
+            <h2 class="section-title">11 Дней Твоей Свободы</h2>
+            <div class="inspiration-box">
+                <p class="inspiration-text">
+                    Знаешь, что самое прекрасное? У тебя есть целых 11 дней, чтобы исследовать Нячанг без спешки.<br>
+                    <span class="highlight">Не планируй каждый день поминутно — позволь магии случиться спонтанно!</span><br>
+                    Доверься своему сердцу и настроению...
+                </p>
+                <div class="days-grid">
+                    <div class="day-card">
+                        <h4>🌊 Дни Релакса</h4>
+                        <p>Пляж, бассейн, спа, долгие завтраки с видом на море. Просто будь. Дыши. Наслаждайся.</p>
+                    </div>
+                    <div class="day-card">
+                        <h4>🗺️ Дни Приключений</h4>
+                        <p>Острова, дайвинг, походы, исследование окрестностей. Почувствуй азарт первооткрывателя!</p>
+                    </div>
+                    <div class="day-card">
+                        <h4>🎭 Дни Культуры</h4>
+                        <p>Пагоды, музеи, местные рынки, кулинарные мастер-классы. Погрузись в атмосферу Вьетнама</p>
+                    </div>
+                    <div class="day-card">
+                        <h4>✨ Дни Спонтанности</h4>
+                        <p>Просто иди туда, куда ведёт сердце. Заблудись в узких улочках. Магия случается именно так!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="personal-message">
+                <p>
+                    Александра, эти 11 дней — <span class="highlight">только твои</span>.<br>
+                    Не пытайся успеть всё. Лучше прочувствуй каждое мгновение.<br>
+                    Позволь себе лениться, мечтать, открывать, удивляться.<br>
+                    <span class="heart">💛</span> Это твоё время. Твоё приключение. Твоя история.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p class="footer-message">Пусть твоё путешествие будет волшебным!</p>
+            <p class="footer-submessage">
+                Нячанг ждёт тебя с открытыми объятиями,<br>
+                золотыми закатами и приключениями, которые изменят тебя<br>
+                <span style="font-size: 1.5rem; display: block; margin-top: 20px;">
+                    Доверься моменту. Вдохни полной грудью. Живи!
+                </span>
+            </p>
+            <p class="footer-signature">
+                С верой в тебя и твои мечты, Александра <span class="heart">💛</span>
+            </p>
+            <p class="footer-date">
+                🌺 май 2026 — время твоих чудес 🌺
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Add sparkles on click
+        document.addEventListener('click', function(e) {
+            for(let i = 0; i < 8; i++) {
+                createSparkle(e.pageX, e.pageY);
+            }
+        });
+
+        function createSparkle(x, y) {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.style.left = x + Math.random() * 60 - 30 + 'px';
+            sparkle.style.top = y + Math.random() * 60 - 30 + 'px';
+            sparkle.style.animationDelay = Math.random() * 0.3 + 's';
+            document.body.appendChild(sparkle);
+            
+            setTimeout(() => sparkle.remove(), 1000);
+        }
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Fade in on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.place-card, .feature, .tip-card, .food-category, .day-card, .magic-list li').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.8s ease-out';
+            observer.observe(el);
+        });
+
+        // Create floating particles
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.innerHTML = ['✨', '🌺', '🌊', '', '🌅'][Math.floor(Math.random() * 5)];
+            particle.style.left = Math.random() * 100 + 'vw';
+            particle.style.fontSize = (Math.random() * 20 + 10) + 'px';
+            particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            particle.style.opacity = Math.random() * 0.5 + 0.1;
+            document.body.appendChild(particle);
+            
+            setTimeout(() => particle.remove(), 20000);
+        }
+
+        setInterval(createParticle, 3000);
+    </script>
+</body>
+</html>
